@@ -1,0 +1,12 @@
+spring:
+  jpa:
+    show-sql: false
+    database-platform: com.mindata.blockchain.core.sqlite.SQLiteDialect
+    generate-ddl: true
+
+rss:
+  urls: http://f.cili001.com/index/rss?type=magnet
+aria2:
+  url: http://souji.iok.la:6800/jsonrpc
+server:
+  port: 8080
