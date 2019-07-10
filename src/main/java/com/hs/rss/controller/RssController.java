@@ -18,7 +18,6 @@ import java.util.Map;
  */
 @Api(description = "订阅相关接口")
 @RestController
-@ResponseBody
 public class RssController {
 
     @Autowired
@@ -52,6 +51,6 @@ public class RssController {
     @GetMapping("/switch")
     public JSONObject switch_on() {
         StaticScheduleTask.TASK_SWITCH = !StaticScheduleTask.TASK_SWITCH;
-        return JSONObject.parseObject("{\"status\":\"ok\",\"switch\":\"" + StaticScheduleTask.TASK_SWITCH + "\"}");
+        return JSONObject.parseObject("{\"status\":\"ok\",\"switch\":" + StaticScheduleTask.TASK_SWITCH + "}");
     }
 }
