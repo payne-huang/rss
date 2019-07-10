@@ -15,6 +15,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -49,6 +50,7 @@ public class RssServiceImpl extends BaseServiceImpl implements RssService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void batchAdd(List<CreateRssVO> createRssVOS) {
         List<RssEntity> rssEntities = rssMapper.selectAll();
         createRssVOS.forEach(createRssVO -> {
