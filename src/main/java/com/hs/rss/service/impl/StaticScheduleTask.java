@@ -24,13 +24,19 @@ import java.util.Date;
 @EnableScheduling
 public class StaticScheduleTask {
 
+    public static boolean TASK_SWITCH  = true;
+
     @Autowired
     RssService rssService;
 
     @Scheduled(cron = "0 25 * * * *")
     private void configureTasks() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        log.info("execute the job,current time={}", sdf.format(new Date()));
-        rssService.rss();
+        if (TASK_SWITCH) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            log.info("execute the job,current time={}", sdf.format(new Date()));
+            rssService.rss();
+        } else {
+            log.info("current close the switch.");
+        }
     }
 }
