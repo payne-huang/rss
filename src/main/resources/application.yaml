@@ -5,8 +5,8 @@ spring:
     generate-ddl: true
 
 rss:
-  urls: http://f.cili001.com/index/rss?type=magnet
+  urls: http://f.cili001.com/index/rss?type=magnet&cid=25
 aria2:
-  url: http://souji.iok.la:6800/jsonrpc
+  url: http://jerrychel.qicp.vip:6800/jsonrpc
 server:
   port: 8080
