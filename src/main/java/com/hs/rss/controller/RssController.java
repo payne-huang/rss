@@ -5,8 +5,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.hs.rss.service.RssService;
 import com.hs.rss.service.impl.RssServiceImpl;
 import com.hs.rss.service.impl.StaticScheduleTask;
+import com.hs.rss.vo.ENV;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +24,13 @@ public class RssController {
 
     @Autowired
     RssService rssService;
+
+    @ApiOperation(value = "添加可订阅视频名字")
+    @GetMapping("/set/env")
+    public JSONObject setRssHost(@ApiParam(name = "host") String host){
+        ENV.RSS_HOST = host;
+        return JSONObject.parseObject("{\"status\":\"ok\"}");
+    }
 
     @ApiOperation(value = "添加可订阅视频名字")
     @GetMapping("/tv/{tv}/add")

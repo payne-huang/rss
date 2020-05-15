@@ -6,6 +6,7 @@ import com.hs.rss.mapper.RssMapper;
 import com.hs.rss.service.AriaService;
 import com.hs.rss.service.RssService;
 import com.hs.rss.vo.CreateRssVO;
+import com.hs.rss.vo.ENV;
 import com.rsslibj.elements.Channel;
 import com.rsslibj.elements.Item;
 import com.rsslibj.elements.RSSReader;
@@ -28,9 +29,6 @@ import java.util.List;
 @Service
 @Slf4j
 public class RssServiceImpl extends BaseServiceImpl implements RssService {
-
-    @Value("${rss.urls}")
-    private String rssUrls;
 
     public static List<String> tvList = new ArrayList<>();
 
@@ -83,7 +81,7 @@ public class RssServiceImpl extends BaseServiceImpl implements RssService {
 
     @Override
     public void rss() {
-        String[] rssUrlArray = rssUrls.split(";");
+        String[] rssUrlArray = ENV.RSS_HOST.split(";");
         for (String rssUrl : rssUrlArray) {
             try {
                 List<CreateRssVO> createRssVOS = readerRSS(rssUrl);
